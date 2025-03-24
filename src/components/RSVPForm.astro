@@ -1,0 +1,26 @@
+---
+// src/components/RSVPForm.astro
+---
+
+<form class="max-w-md mx-auto p-6 bg-amber-300 rounded-lg shadow-md">
+  <h3 class="text-2xl font-bold mb-4 text-center">Confirma tu asistencia</h3>
+  <input
+    type="text"
+    placeholder="Nombre"
+    class="w-full p-2 mb-4 border rounded"
+  />
+  <input
+    type="email"
+    placeholder="Email"
+    class="w-full p-2 mb-4 border rounded"
+  />
+  <select class="w-full p-2 mb-4 border rounded">
+    <option>Asistiré</option>
+    <option>No podré asistir</option>
+  </select>
+  <button
+    type="submit"
+    class="w-full bg-rose-600 text-white py-2 rounded hover:bg-rose-700"
+    >Enviar</button
+  >
+</form>

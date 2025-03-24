@@ -1,0 +1,20 @@
+---
+// src/components/Gallery.astro
+const photos = [
+  "/gallery/photo1.jpg",
+  "/gallery/photo2.jpg",
+  "/gallery/photo3.jpg",
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-12">
+  {
+    photos.map((photo) => (
+      <img
+        src={photo}
+        alt="Foto de la pareja"
+        class="rounded-lg shadow-lg hover:scale-105 transition-transform"
+      />
+    ))
+  }
+</div>

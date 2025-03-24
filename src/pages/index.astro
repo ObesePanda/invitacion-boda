@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Countdown from "../components/Countdown.astro";
+import Gallery from "../components/Gallery.astro";
+import RSVPForm from "../components/RSVPForm.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <section
+    class="bg-[url('/images/bg-hero.jpg')] bg-cover h-screen flex items-center justify-center text-center text-white"
+  >
+    <div class="bg-amber-500 bg-opacity-50 p-12 rounded-lg">
+      <h1 class="text-9xl font-cursive mb-4">Ana & Luis</h1>
+      <p class="text-xl">Nos casamos el 15 de Octubre, 2024</p>
+      <Countdown />
+      <Gallery />
+      <RSVPForm />
+    </div>
+  </section>
 </Layout>
