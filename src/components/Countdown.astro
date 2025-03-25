@@ -1,13 +1,96 @@
 ---
-// src/components/Countdown.astro
-const weddingDate = new Date("2025-10-31T00:00:00");
-const now = new Date();
-const diff = weddingDate - now;
-const daysLeft = Math.floor(diff / (1000 * 60 * 60 * 24));
+
 ---
 
-<div class="mt-8">
-  <p class="text-3xl text-white relative z-10">
-    Faltan <span class="font-bold text-3xl">{daysLeft}</span> días
-  </p>
+<div class="mt-8 mb-8">
+  <div class="mb-8">
+    <p
+      class="flex justify-center font-[Montserrat] text-4xl md:text-6xl text-[--color-success-content] relative z-10"
+    >
+      Faltan <span
+        id="days"
+        class="font-[Montserrat] font-bold text-6xl mr-2 ml-2">0</span
+      > días
+    </p>
+  </div>
+
+  <div
+    class="grid auto-cols-max grid-flow-col gap-5 text-center font-[Montserrat] align-center justify-center"
+  >
+    <div
+      class="bg-neutral rounded-box text-neutral-content flex flex-col p-3 md:p-8"
+    >
+      <span class="countdown font-mono text-4xl md:text-6xl">
+        <span id="countdown-days" style="--value:0;" aria-live="polite">0</span>
+      </span>
+      Dias
+    </div>
+    <div
+      class="bg-neutral rounded-box text-neutral-content flex flex-col p-3 md:p-8"
+    >
+      <span class="countdown font-mono text-4xl md:text-6xl">
+        <span id="countdown-hours" style="--value:0;" aria-live="polite">0</span
+        >
+      </span>
+      Horas
+    </div>
+    <div
+      class="bg-neutral rounded-box text-neutral-content flex flex-col p-3 md:p-8"
+    >
+      <span class="countdown font-mono text-4xl md:text-6xl">
+        <span id="countdown-minutes" style="--value:0;" aria-live="polite"
+          >0</span
+        >
+      </span>
+      Min
+    </div>
+    <div
+      class="bg-neutral rounded-box text-neutral-content flex flex-col p-3 md:p-8"
+    >
+      <span class="countdown font-mono text-4xl md:text-6xl">
+        <span id="countdown-seconds" style="--value:0;" aria-live="polite"
+          >0</span
+        >
+      </span>
+      Seg
+    </div>
+  </div>
 </div>
+
+<!-- Script del lado del cliente -->
+<script>
+  const weddingDate = new Date("2025-06-30T00:00:00");
+
+  const updateCountdown = () => {
+    const now = new Date();
+    const diff = weddingDate - now;
+
+    const daysT = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    // Actualizar --value y el texto (para accesibilidad)
+    document.getElementById("days").textContent = daysT;
+
+    const daysElement = document.getElementById("countdown-days");
+    daysElement.style.setProperty("--value", daysT);
+    daysElement.textContent = daysT;
+
+    const hoursElement = document.getElementById("countdown-hours");
+    hoursElement.style.setProperty("--value", hours);
+    hoursElement.textContent = hours;
+
+    const minutesElement = document.getElementById("countdown-minutes");
+    minutesElement.style.setProperty("--value", minutes);
+    minutesElement.textContent = minutes;
+
+    const secondsElement = document.getElementById("countdown-seconds");
+    secondsElement.style.setProperty("--value", seconds);
+    secondsElement.textContent = seconds;
+  };
+
+  // Iniciar el contador
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>

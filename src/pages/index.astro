@@ -4,24 +4,94 @@ import Layout from "../layouts/Layout.astro";
 import Countdown from "../components/Countdown.astro";
 import Gallery from "../components/Gallery.astro";
 import RSVPForm from "../components/RSVPForm.astro";
+import Calendar from "../../public/svg/Calendar.astro";
+import Itinerario from "../components/Itinerario.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout>
+  <Navbar />
   <section
-    class="bg-[url('../images/novios.jpg')] bg-cover h-screen flex items-end justify-center text-center text-black"
+    class="relative h-screen flex items-end justify-center text-center text-black overflow-hidden"
   >
-    <div class="relative p-12 rounded-lg">
-    <!-- Fondo semitransparente -->
-    <div class="absolute inset-0 bg-black  opacity-15 rounded-lg "></div>
-  
-    <!-- Contenido encima del fondo -->
-    <h1 class="text-9xl font-cursive mb-4 relative z-10 text-[#d28a55] [text-shadow:_0_2px_4px_rgb(73_39_3_/_1.0)] ">Ana & Luis</h1>
+    <!-- Imagen de fondo -->
+    <div
+      class="absolute inset-0 bg-[url('../images/novios.jpg')] bg-cover grayscale"
+    >
+    </div>
+    <div
+      class="relative w-[90%] max-w-3xl bg-black/30 text-white p-12 flex flex-col items-center justify-center
+              backdrop-blur-xs rounded-tl-4xl rounded-tr-4xl"
+    >
+      <h1
+        class="text-9xl font-cursive mb-4 text-[#fd9e5a] [text-shadow:_0_2px_4px_rgb(73_39_3_/_1.0)]"
+      >
+        Ana & Luis
+      </h1>
 
-    <p class="text-4xl relative z-10 text-white p-4 [text-shadow:_7px_5px_12px_#000000] border-t-2 border-b-2">Nos casamos el 15 de Octubre, 2024</p>
-    <Countdown class="relative z-10" />
-  </div>
+      <p
+        class="text-4xl p-4 border-t-2 border-b-2 font-[Montserrat] [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.5)]"
+      >
+        ¡Nos casamos!
+      </p>
+      <p
+        class="flex items-center text-xl p-2 font-[Montserrat] [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.5)]"
+      >
+        <Calendar />
+        15 de Octubre 2025
+      </p>
+    </div>
   </section>
+  <section>
+    <Countdown />
+  </section>
+
   <section>
     <Gallery />
   </section>
+
+  <section class="flex justify-center items-center flex-col p-4 mt-8 w-full">
+    <Itinerario />
+  </section>
+
+  <div class="carousel carousel-center rounded-box">
+    <div class="carousel-item w-80">
+      <img src="/public/images-carousel/1.jpg" alt="Drink" />
+    </div>
+    <div class="carousel-item w-80">
+      <img src="/public/images-carousel/2.jpg" alt="Drink" />
+    </div>
+    <div class="carousel-item w-80">
+      <img
+        class="object-none"
+        src="/public/images-carousel/3.jpg"
+        alt="Drink"
+      />
+    </div>
+    <div class="carousel-item w-80">
+      <img
+        class="object-cover"
+        src="/public/images-carousel/4.jpg"
+        alt="Drink"
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
+        alt="Drink"
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
+        alt="Drink"
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
+        alt="Drink"
+      />
+    </div>
+  </div>
 </Layout>
