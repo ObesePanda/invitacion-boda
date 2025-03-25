@@ -8,14 +8,20 @@ import RSVPForm from "../components/RSVPForm.astro";
 
 <Layout>
   <section
-    class="bg-[url('../images/bg.jpeg')] bg-cover h-screen flex items-center justify-center text-center text-white"
+    class="bg-[url('../images/novios.jpg')] bg-cover h-screen flex items-end justify-center text-center text-black"
   >
-    <div class="bg-black/50 p-12 rounded-lg">
-      <h1 class="text-9xl font-cursive mb-4">Ana & Luis</h1>
-      <p class="text-xl">Nos casamos el 15 de Octubre, 2024</p>
-      <Countdown />
-      <Gallery />
-      <RSVPForm />
-    </div>
+    <div class="relative p-12 rounded-lg">
+    <!-- Fondo semitransparente -->
+    <div class="absolute inset-0 bg-black  opacity-15 rounded-lg "></div>
+  
+    <!-- Contenido encima del fondo -->
+    <h1 class="text-9xl font-cursive mb-4 relative z-10 text-[#d28a55] [text-shadow:_0_2px_4px_rgb(73_39_3_/_1.0)] ">Ana & Luis</h1>
+
+    <p class="text-4xl relative z-10 text-white p-4 [text-shadow:_7px_5px_12px_#000000] border-t-2 border-b-2">Nos casamos el 15 de Octubre, 2024</p>
+    <Countdown class="relative z-10" />
+  </div>
+  </section>
+  <section>
+    <Gallery />
   </section>
 </Layout>
