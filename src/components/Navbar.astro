@@ -1,10 +1,11 @@
 ---
-
+// src/components/Navbar.astro
 ---
 
-<nav>
+<nav class="bg-black p-1">
+  <!-- Contenedor para desktop (se muestra en pantallas grandes) -->
   <ul
-    class="flex justify-center space-x-4 text-sm font-[Montserrat] bg-black p-1 gap-2"
+    class="hidden md:flex justify-center space-x-4 text-sm font-[Montserrat] gap-2"
   >
     <li>
       <a href="#inicio" class="text-amber-300 hover:text-amber-100">Inicio</a>
@@ -20,10 +21,106 @@
       >
     </li>
     <li>
-      <a href="#galeria" class="text-white hover:text-amber-100">Galería</a>
+      <a href="#galeria" class="text-white hover:text-amber-100">Historia</a>
     </li>
     <li>
-      <a href="#rsvp" class="text-white hover:text-amber-100">RSVP</a>
+      <a href="#rsvp" class="text-white hover:text-amber-100">Vestimenta</a>
     </li>
   </ul>
+
+  <!-- Menú móvil (se muestra en pantallas pequeñas) -->
+  <div class="md:hidden flex justify-between items-center px-2">
+    <!-- Logo o título opcional -->
+    <span class="text-white font-[Montserrat]">Ana & Luis</span>
+
+    <!-- Botón hamburguesa -->
+    <button
+      id="mobileMenuButton"
+      class="text-white focus:outline-none"
+      aria-label="Abrir menú"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menú desplegable móvil -->
+  <div
+    id="mobileMenu"
+    class="hidden md:hidden absolute left-0 right-0 bg-black z-50 shadow-lg"
+  >
+    <ul class="flex flex-col text-sm font-[Montserrat]">
+      <li class="border-b border-gray-700">
+        <a
+          href="#inicio"
+          class="block py-3 px-4 text-amber-300 hover:bg-gray-800">Inicio</a
+        >
+      </li>
+      <li class="border-b border-gray-700">
+        <a
+          href="#countdown"
+          class="block py-3 px-4 text-white hover:bg-gray-800"
+          >Cuenta regresiva</a
+        >
+      </li>
+      <li class="border-b border-gray-700">
+        <a
+          href="#itinerario"
+          class="block py-3 px-4 text-white hover:bg-gray-800">Itinerario</a
+        >
+      </li>
+      <li class="border-b border-gray-700">
+        <a href="#galeria" class="block py-3 px-4 text-white hover:bg-gray-800"
+          >Historia</a
+        >
+      </li>
+      <li>
+        <a href="#rsvp" class="block py-3 px-4 text-white hover:bg-gray-800"
+          >Vestimenta</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Script para manejar el menú móvil -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+
+        // Cambiar el icono de hamburguesa a X cuando está abierto
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        menuButton.innerHTML = isOpen
+          ? `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+             </svg>`
+          : `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+             </svg>`;
+      });
+
+      // Cerrar el menú al hacer clic en un enlace
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuButton.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>`;
+        });
+      });
+    });
+  </script>
 </nav>
