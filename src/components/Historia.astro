@@ -1,0 +1,44 @@
+---
+// src/components/Gallery.astro
+const photos = [
+  "/images/novios.jpg",
+  "/images/boda2.webp",
+  "/images/boda3.webp",
+];
+---
+
+<div
+  class="bg-[#bdb1a8] w-full flex flex-col items-center p-8 font-[Montserrat]"
+>
+  <img src="../public/images/boda.png" alt="" class="w-[120px] mb-8" />
+  <div class="md:w-[40%] w-full text-center flex items-center flex-col">
+    <h4
+      class="md:text-5xl text-3xl font-bold border-t-2 border-b-2 md:w-[450px] w-[350px] p-4"
+    >
+      Nuestra Historia
+    </h4>
+    <p class="md:p-8 p-4 md:text-lg tex-sm mt-3">
+      En esta invitación, compartimos algunos momentos especiales que han
+      marcado nuestro viaje hasta aquí. Esperamos que disfrutéis viendo cómo
+      nuestro amor ha florecido y cómo nuestro compromiso se ha fortalecido.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
+    {
+      photos.map((photo) => (
+        <img
+          src={photo}
+          alt="Foto de la pareja"
+          class="rounded-full shadow-lg hover:scale-105 hover:duration-500 hover:ease-in-out transition-transform"
+        />
+      ))
+    }
+  </div>
+  <div class="md:w-[40%] w-full text-center flex items-center flex-col">
+    <p class="md:p-8 p-4 md:text-lg tex-sm mt-3">
+      Les damos las gracias por ser parte de nuestra historia y por acompañarnos
+      en este día tan significativo. Esperamos con alegría escribir juntos los
+      próximos capítulos de esta hermosa historia de amor en nuestra boda.
+    </p>
+  </div>
+</div>

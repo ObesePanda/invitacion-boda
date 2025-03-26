@@ -1,0 +1,51 @@
+---
+import Ubicacion from "../../public/svg/Ubicacion.astro";
+---
+
+<section class="flex flex-col md:flex-col w-[70%] font-[Montserrat]">
+  <div class="flex flex-col items-center">
+    <img src="../public/images/hotel.png" alt="" class="w-[120px] mb-8" />
+
+    <h4
+      class="md:text-5xl text-3xl font-bold border-t-2 border-b-2 md:w-[450px] w-[350px] p-4 text-center"
+    >
+      Hoteles
+    </h4>
+  </div>
+  <div class="flex flex-col md:flex-row">
+    <div class="flex items-center flex-col p-8 md:w-[50%]">
+      <h2 class="text-2xl p-4 font-bold">Hotel Palmiras</h2>
+      <div
+        class="flex flex-row gap-2 items-center border-1 p-4 cursor-pointer hover:bg-black hover:text-white hover:ease-in-out hover: duration-700"
+      >
+        <div class="size-5 mb-2">
+          <Ubicacion />
+        </div>
+        <a href="">Ver ubicacion</a>
+      </div>
+    </div>
+
+    <div class="flex items-center flex-col p-8 md:w-[50%]">
+      <h2 class="text-2xl p-4 font-bold">Hotel El Carmen</h2>
+      <div
+        class="flex flex-row gap-2 items-center border-1 p-4 cursor-pointer hover:bg-black hover:text-white hover:ease-in-out hover: duration-700"
+      >
+        <div class="size-5 mb-2">
+          <Ubicacion />
+        </div>
+        <a href="">Ver ubicacion</a>
+      </div>
+    </div>
+    <div class="flex items-center flex-col p-8 md:w-[50%]">
+      <h2 class="text-2xl p-4 font-bold">Hotel Portozul</h2>
+      <div
+        class="flex flex-row gap-2 justify-center items-center border-1 p-4 cursor-pointer hover:bg-black hover:text-white hover:ease-in-out hover: duration-700"
+      >
+        <div class="size-5 mb-2">
+          <Ubicacion />
+        </div>
+        <a href="">Ver ubicacion</a>
+      </div>
+    </div>
+  </div>
+</section>

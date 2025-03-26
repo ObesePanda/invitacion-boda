@@ -3,10 +3,15 @@
 import Layout from "../layouts/Layout.astro";
 import Countdown from "../components/Countdown.astro";
 import Gallery from "../components/Gallery.astro";
-import RSVPForm from "../components/RSVPForm.astro";
 import Calendar from "../../public/svg/Calendar.astro";
 import Itinerario from "../components/Itinerario.astro";
 import Navbar from "../components/Navbar.astro";
+import Historia from "../components/Historia.astro";
+import Hoteles from "../components/Hoteles.astro";
+import DressCode from "../components/DressCode.astro";
+import Regalo from "../components/Regalo.astro";
+import Album from "../components/Album.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
@@ -50,48 +55,27 @@ import Navbar from "../components/Navbar.astro";
     <Gallery />
   </section>
 
-  <section class="flex justify-center items-center flex-col p-4 mt-8 w-full">
+  <section class="flex justify-center p-4 mt-8">
     <Itinerario />
   </section>
 
-  <div class="carousel carousel-center rounded-box">
-    <div class="carousel-item w-80">
-      <img src="/public/images-carousel/1.jpg" alt="Drink" />
-    </div>
-    <div class="carousel-item w-80">
-      <img src="/public/images-carousel/2.jpg" alt="Drink" />
-    </div>
-    <div class="carousel-item w-80">
-      <img
-        class="object-none"
-        src="/public/images-carousel/3.jpg"
-        alt="Drink"
-      />
-    </div>
-    <div class="carousel-item w-80">
-      <img
-        class="object-cover"
-        src="/public/images-carousel/4.jpg"
-        alt="Drink"
-      />
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp"
-        alt="Drink"
-      />
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp"
-        alt="Drink"
-      />
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
-        alt="Drink"
-      />
-    </div>
-  </div>
+  <section class="flex justify-center items-center mt-8">
+    <Historia />
+  </section>
+
+  <section class="flex justify-center p-4 mt-8">
+    <Hoteles />
+  </section>
+  <section class="flex justify-center p-4 mt-8 bg-[#bdb1a8]">
+    <DressCode />
+  </section>
+  <section class="flex justify-center p-8 bg-[#505069] text-white">
+    <Regalo />
+  </section>
+  <section class="flex justify-center p-4 bg-[#bdb1a8]">
+    <Album />
+  </section>
+  <section class="flex justify-center p-8 bg-[#222222] text-white">
+    <Footer />
+  </section>
 </Layout>
