@@ -13,6 +13,7 @@ import Regalo from "../components/Regalo.astro";
 import Album from "../components/Album.astro";
 import Footer from "../components/Footer.astro";
 import MusicPlayer from "../components/MusicPlayer.astro";
+import RSVPForm from "../components/RSVPForm.astro";
 ---
 
 <Layout>
@@ -58,18 +59,18 @@ import MusicPlayer from "../components/MusicPlayer.astro";
     <Gallery />
   </section>
 
-  <section class="flex justify-center p-4 mt-8">
+  <section id="itinerario" class="flex justify-center p-4 mt-8">
     <Itinerario />
   </section>
 
-  <section class="flex justify-center items-center mt-8">
+  <section id="historia" class="flex justify-center items-center mt-8">
     <Historia />
   </section>
 
   <section class="flex justify-center p-4 mt-8">
     <Hoteles />
   </section>
-  <section class="flex justify-center p-4 mt-8 bg-[#bdb1a8]">
+  <section id="vestimenta" class="flex justify-center p-4 mt-8 bg-[#bdb1a8]">
     <DressCode />
   </section>
   <section class="flex justify-center p-8 bg-[#505069] text-white">
@@ -77,6 +78,21 @@ import MusicPlayer from "../components/MusicPlayer.astro";
   </section>
   <section class="flex justify-center p-4 bg-[#bdb1a8]">
     <Album />
+  </section>
+
+  <section
+    id="confirmar"
+    class="flex justify-center p-8 bg-[#222222] text-white"
+  >
+    <RSVPForm />
+  </section>
+  <section class="relative flex justify-center p-8 text-white">
+    <div
+      class="absolute inset-0 bg-[url('/images/novios.jpg')] bg-cover bg-center"
+    >
+    </div>
+    <div class="absolute inset-0 bg-black/80"></div>
+    <RSVPForm class="relative" />
   </section>
   <section class="flex justify-center p-8 bg-[#222222] text-white">
     <Footer />

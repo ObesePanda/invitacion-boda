@@ -1,5 +1,6 @@
 ---
 import Ubicacion from "../../public/svg/Ubicacion.astro";
+import SupabaseUploader from "./SupabaseUploader.astro";
 ---
 
 <section class="flex flex-col md:flex-col w-[70%] font-[Montserrat] mt-4 mb-8">
@@ -16,14 +17,6 @@ import Ubicacion from "../../public/svg/Ubicacion.astro";
     <h2 class="text-2xl p-4 text-center">
       ¡Ayudanos a construir nuestro tesoro de recuerdos!
     </h2>
-    <p class="text-center">
-      Haz clic en el botón añadir las fotos que hagas durante nuestra boda.
-    </p>
-
-    <div
-      class="flex flex-row gap-2 items-center border-1 p-4 cursor-pointer hover:bg-black hover:text-white hover:ease-in-out hover: duration-700 mt-8"
-    >
-      <a href="">Agregar fotos</a>
-    </div>
+    <SupabaseUploader />
   </div>
 </section>

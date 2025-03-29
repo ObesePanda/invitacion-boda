@@ -1,0 +1,60 @@
+---
+// src/components/SupabaseUploader.astro
+import { supabase } from "../lib/supabaseClient";
+
+const handleUpload = async (event) => {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  // Validar tipo y tamaño
+  const validTypes = ["image/jpeg", "image/png", "image/webp"];
+  if (!validTypes.includes(file.type)) {
+    alert("Solo se permiten imágenes en formato JPG, PNG o WEBP");
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    alert("La imagen debe ser menor a 5MB");
+    return;
+  }
+
+  // Generar nombre único
+  const fileName = `${crypto.randomUUID()}-${file.name}`;
+
+  try {
+    // Subir archivo
+    const { error } = await supabase.storage
+      .from("wedding-photos")
+      .upload(`guest-uploads/${fileName}`, file);
+
+    if (error) throw error;
+
+    alert("¡Foto subida con éxito! Gracias por compartir.");
+    event.target.value = ""; // Resetear input
+  } catch (error) {
+    console.error("Error al subir:", error);
+    alert(`Ocurrió un error: ${error.message}`);
+  }
+};
+---
+
+<div
+  class="upload-container max-w-md mx-auto p-6 bg-white rounded-lg shadow text-center"
+>
+  <h3 class="text-xl font-semibold mb-3">Comparte tus fotos de la boda</h3>
+  <input
+    type="file"
+    id="wedding-upload"
+    accept="image/*"
+    class="hidden"
+    onchange={handleUpload}
+  />
+  <label
+    for="wedding-upload"
+    class="upload-button inline-block mt-2 px-6 py-3 bg-pink-500 text-white rounded-full cursor-pointer hover:bg-pink-600 transition-colors focus:ring-2 focus:ring-pink-300"
+  >
+    📸 Seleccionar foto
+  </label>
+  <p class="text-sm text-gray-500 mt-2">Formatos: JPG, PNG (máx. 5MB)</p>
+</div>
