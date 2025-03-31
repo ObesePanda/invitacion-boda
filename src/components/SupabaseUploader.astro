@@ -1,12 +1,44 @@
 ---
-// src/components/SupabaseUploader.astro
+// src/components/PhotoUpload.astro
+import { supabase } from "../lib/supabaseClient";
+
+// Manejo de la subida en el cliente
+const handleUpload = async (file) => {
+  try {
+    // Generar nombre único para el archivo
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${file.name.split(".").pop()}`;
+
+    const { data, error } = await supabase.storage
+      .from("wedding-photos")
+      .upload(`guest-uploads/${fileName}`, file);
+
+    if (error) throw error;
+
+    // Opcional: guardar referencia en tu tabla
+    const { error: dbError } = await supabase.from("wedding_photos").insert({
+      url: `${import.meta.env.PUBLIC_SUPABASE_URL}/storage/v1/object/public/wedding-photos/${data.path}`,
+      uploaded_by: localStorage.getItem("guestName") || "Anónimo",
+      uploaded_at: new Date().toISOString(),
+    });
+
+    return { success: true, url: data.path };
+  } catch (error) {
+    console.error("Error uploading:", error);
+    return { success: false, error: error.message };
+  }
+};
 ---
 
 <div
   class="upload-container max-w-md mx-auto p-6 bg-white rounded-lg shadow text-center"
 >
   <h3 class="text-xl font-semibold mb-3">Comparte tus fotos de la boda</h3>
-  <input type="file" id="wedding-upload" accept="image/*" class="hidden" />
+  <input
+    type="file"
+    id="wedding-upload"
+    accept="image/jpeg, image/png"
+    class="hidden"
+  />
   <label
     for="wedding-upload"
     class="upload-button inline-block mt-2 px-6 py-3 bg-pink-500 text-white rounded-full cursor-pointer hover:bg-pink-600 transition-colors focus:ring-2 focus:ring-pink-300"
@@ -14,4 +46,75 @@
     📸 Seleccionar foto
   </label>
   <p class="text-sm text-gray-500 mt-2">Formatos: JPG, PNG (máx. 5MB)</p>
+
+  <div id="upload-status" class="mt-4 hidden">
+    <div class="progress-bar h-2 bg-gray-200 rounded-full overflow-hidden">
+      <div
+        id="progress"
+        class="h-full bg-pink-500 transition-all duration-300"
+        style="width: 0%"
+      >
+      </div>
+    </div>
+    <p id="status-text" class="text-sm mt-2"></p>
+  </div>
 </div>
+
+<script>
+  document
+    .getElementById("wedding-upload")
+    .addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      // Validaciones
+      if (file.size > 5 * 1024 * 1024) {
+        alert("El archivo es demasiado grande (máx. 5MB)");
+        return;
+      }
+
+      if (!["image/jpeg", "image/png"].includes(file.type)) {
+        alert("Solo se permiten imágenes JPG o PNG");
+        return;
+      }
+
+      // Mostrar estado
+      const statusDiv = document.getElementById("upload-status");
+      const progressBar = document.getElementById("progress");
+      const statusText = document.getElementById("status-text");
+
+      statusDiv.classList.remove("hidden");
+      statusText.textContent = "Subiendo foto...";
+
+      try {
+        // Opción 1: Usando fetch a un endpoint API (recomendado para producción)
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch("/api/upload-photo", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          progressBar.style.width = "100%";
+          statusText.innerHTML =
+            '✅ Foto subida con éxito! <a href="/galeria" class="text-pink-600 underline">Ver galería</a>';
+
+          // Resetear input
+          e.target.value = "";
+
+          // Ocultar barra después de 3 segundos
+          setTimeout(() => (progressBar.style.width = "0%"), 3000);
+        } else {
+          throw new Error(result.error || "Error al subir");
+        }
+      } catch (error) {
+        statusText.textContent = `Error: ${error.message}`;
+        statusText.classList.add("text-red-500");
+        console.error("Upload failed:", error);
+      }
+    });
+</script>
