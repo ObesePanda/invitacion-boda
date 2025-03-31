@@ -1,0 +1,45 @@
+---
+// src/pages/gracias.astro
+import Layout from "../../layouts/Layout.astro";
+
+// Obtener datos de la URL (si los pasas como query params)
+---
+
+<Layout title="¡Gracias!">
+  <div
+    class="flex justify-center items-center h-screen relative overflow-hidden"
+  >
+    <div
+      class="absolute inset-0 bg-[url('../images/novios.jpg')] bg-cover bg-center bg-no-repeat grayscale flex"
+    >
+    </div>
+
+    <div
+      class="relative w-[90%] max-w-3xl bg-black/70 text-white p-6 md:p-12 backdrop-blur-xs rounded-3xl"
+    >
+      <main
+        class="flex justify-center flex-col text-center p-4 max-w-2xl mx-auto"
+      >
+        <h1
+          class="md:text-9xl text-6xl font-cursive mb-4 text-[#ffffff] [text-shadow:_0_2px_4px_rgb(73_39_3_/_1.0)] text-center"
+        >
+          Ana & Luis
+        </h1>
+        <h1 class="md:text-5xl text-4xl font-bold mb-6 font-[Montserrat]">
+          ¡Gracias!
+        </h1>
+        <p class="text-lg font-[Montserrat]">
+          Hemos recibido tu respuesta para nuestra boda.
+        </p>
+        <p class="mt-4 font-[Montserrat]">Muchas gracias por responder.</p>
+
+        <a
+          href="/"
+          class="mt-8 inline-block bg-amber-900 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition duration-500 font-[Montserrat]"
+        >
+          Volver al inicio
+        </a>
+      </main>
+    </div>
+  </div>
+</Layout>

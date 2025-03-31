@@ -9,9 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.3",
+    "@astrojs/node": "^9.1.3",
+    "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/vite": "^4.0.15",
     "astro": "^5.5.4",
+    "dotenv": "^16.4.7",
     "tailwindcss": "^4.0.15"
   },
   "devDependencies": {

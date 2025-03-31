@@ -4,38 +4,74 @@
 
 <form
   method="POST"
-  action="https://script.google.com/macros/s/AKfycbyEJlhspf07FAYNpLXDNBFdLDxPfWY_82Yb5NRpbbPYsPNtMo_hfkF1zICcp6lDUnAq/exec"
-  class="max-w-lg mx-auto p-8 bg-black/50 text-white rounded-lg shadow-md font-[Montserrat]"
+  action="/api/rsvp"
+  class="flex flex-col gap-4 md:w-[30%] w-[100%] bg-white rounded-2xl text-black p-8 font-[Montserrat]"
 >
-  <h3 class="text-2xl font-bold mb-4 text-center">Confirma tu asistencia</h3>
+  <h4 class="text-4xl font-bold p-2 text-center">Asistencia</h4>
+  <h2 class="text-xl p-4 text-center">¿Podras asistir al evento?</h2>
   <input
+    class="p-3 border-1 border-gray-400 rounded-md outline-none"
     type="text"
     name="nombre"
     placeholder="Nombre"
-    class="w-full p-2 mb-4 border rounded"
     required
   />
   <input
+    class="p-3 border-1 border-gray-400 rounded-md outline-none"
     type="tel"
     name="telefono"
     placeholder="Teléfono"
-    class="w-full p-2 mb-4 border rounded"
     required
   />
+
+  <input
+    class="p-3 border-1 border-gray-400 rounded-md outline-none"
+    type="text"
+    name="acompanantes"
+    placeholder="Acompañantes"
+    required
+  />
+  <small>
+    *Ingresa con numero la cantidad de personas que te acompañaran
+  </small>
   <select
+    class="p-3 border-1 border-gray-400 rounded-md outline-none"
     name="asistencia"
-    class="w-full p-2 mb-4 border rounded text-white"
     required
   >
-    <option value="" disabled selected hidden>Selecciona...</option>
-    <option class="text-black" value="Asistiré">Asistiré</option>
-    <option class="text-black" value="No podré asistir">No podré asistir</option
-    >
+    <option disabled selected hidden>Selecciona...</option>
+    <option value="Asistire">Asistiré</option>
+    <option value="No podre asistir">No podré asistir</option>
   </select>
   <button
     type="submit"
-    class="w-full bg-[#bdb1a8] text-black py-2 rounded hover:bg-[#99897d] transition duration-300"
+    class="upload-button inline-block mt-2 px-6 py-3 bg-[#000000] text-white rounded-full cursor-pointer hover:bg-[#242424] transition-colors focus:ring-2 focus:ring-pink-300"
+    >Enviar</button
   >
-    Enviar
-  </button>
 </form>
+
+<!-- En tu formulario -->
+<script>
+  document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/rsvp", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        window.location.href = result.redirectTo || "/api/gracias";
+      } else {
+        alert("Error: " + (result.error || "Error al enviar el formulario"));
+      }
+    } catch (error) {
+      alert("Error de conexión");
+    }
+  });
+</script>
