@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "sal.js/dist/sal.css";
 ---
 
 <!doctype html>
@@ -20,6 +21,16 @@ import "../styles/global.css";
   </head>
   <body>
     <slot />
+
+    <script>
+      import sal from "sal.js";
+      sal({
+        threshold: 0.2, // % visible para activar animación (0.1 = 10%)
+        once: true, // Animación solo una vez
+        disable: "mobile", // Desactiva en móviles (opcional)
+        rootMargin: "0px 0px -100px 0px", // Área de detección
+      });
+    </script>
   </body>
 </html>
 

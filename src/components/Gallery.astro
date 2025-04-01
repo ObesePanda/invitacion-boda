@@ -7,7 +7,12 @@ const photos = [
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-12 bg-[#bdb1a8]">
+<div
+  data-sal="fade"
+  data-sal-duration="2000"
+  data-sal-delay="200"
+  class="grid grid-cols-1 md:grid-cols-3 gap-4 py-12 bg-[#bdb1a8]"
+>
   {
     photos.map((photo) => (
       <img

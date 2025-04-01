@@ -2,10 +2,20 @@
 import Ubicacion from "../../public/svg/Ubicacion.astro";
 ---
 
-<section class="flex justify-center items-center flex-col md:flex-row w-[70%]">
+<section
+  data-sal="slide-up"
+  data-sal-duration="800"
+  data-sal-delay="100"
+  class="flex justify-center items-center flex-col md:flex-row w-[70%]"
+>
   <div class="flex justify-center items-center flex-col p-8 md:w-[50%]">
     <img src="../public/images/capilla.png" alt="" class="w-[120px] mb-8" />
-    <h1 class="text-6xl border-t-2 border-b-2 border-[#2c2c2c] pt-8 p-4">
+    <h1
+      data-sal="fade"
+      data-sal-duration="2000"
+      data-sal-delay="200"
+      class="text-6xl border-t-2 border-b-2 border-[#2c2c2c] pt-8 p-4"
+    >
       Ceremonia
     </h1>
     <h2 class="text-2xl p-4 font-[Montserrat] font-bold">14:00 Hrs.</h2>
@@ -15,7 +25,7 @@ import Ubicacion from "../../public/svg/Ubicacion.astro";
       Tendra lugar el proximo <span class="font-bold"
         >Sabado 15 de Octubre del 2025</span
       >
-      <span class="font-bold">Morelia</span> Michoacan. México
+      <span class="font-bold">Ciudad</span> Estado. Pais
     </p>
     <div
       class="flex flex-row gap-2 font-[Montserrat] justify-center items-center border-1 p-4 cursor-pointer hover:bg-black hover:text-white hover:ease-in-out hover: duration-700 -mt-10"
@@ -29,7 +39,12 @@ import Ubicacion from "../../public/svg/Ubicacion.astro";
 
   <div class="flex justify-center items-center flex-col p-8 md:w-[50%]">
     <img src="../public/images/catering.png" alt="" class="w-[120px] mb-8" />
-    <h1 class="text-6xl border-t-2 border-b-2 border-[#2c2c2c] pt-8 p-4">
+    <h1
+      data-sal="fade"
+      data-sal-duration="2000"
+      data-sal-delay="200"
+      class="text-6xl border-t-2 border-b-2 border-[#2c2c2c] pt-8 p-4"
+    >
       Celebración
     </h1>
     <h2 class="text-2xl p-4 font-[Montserrat] font-bold">16:30 Hrs.</h2>
@@ -37,7 +52,7 @@ import Ubicacion from "../../public/svg/Ubicacion.astro";
       class="text-base font-[Montserrat] text-center md:w-[60%] md:text-sm w-full mb-10 h-[100px]"
     >
       Continuación de la ceremonia en el Salon <span class="font-bold"
-        >"Las Galas"</span
+        >"Nombre Lugar"</span
       > cerca de "Referencia"
     </p>
 

@@ -1,0 +1,39 @@
+---
+import { supabase } from "../lib/supabaseClient";
+import Layout from "../layouts/Layout.astro";
+// src/pages/galeria.astro
+const { data: photos } = await supabase
+  .from("wedding_photos")
+  .select("*")
+  .order("uploaded_at", { ascending: false });
+---
+
+<Layout>
+  <div class="flex flex-col items-center font-[Montserrat] mt-4 mb-4">
+    <img src="../public/images/album.png" alt="" class="w-[120px]" />
+
+    <h4
+      class="md:text-4xl text-2xl font-bold md:w-[450px] w-[350px] p-4 text-center"
+    >
+      Álbum de Boda
+    </h4>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 p-8 font-[Montserrat]">
+    {
+      photos.map((photo) => (
+        <a
+          href={photo.url}
+          target="_blank"
+          class="hover:scale-105 transition-transform"
+        >
+          <img
+            src={photo.url}
+            alt="Foto de la boda"
+            class="w-full h-48 object-cover rounded-lg shadow-md"
+            loading="lazy"
+          />
+        </a>
+      ))
+    }
+  </div>
+</Layout>

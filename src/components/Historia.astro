@@ -10,8 +10,20 @@ const photos = [
 <div
   class="bg-[#bdb1a8] w-full flex flex-col items-center p-8 font-[Montserrat]"
 >
-  <img src="../public/images/boda.png" alt="" class="w-[120px] mb-8" />
-  <div class="md:w-[70%] w-full text-center flex items-center flex-col">
+  <img
+    data-sal="fade"
+    data-sal-duration="2000"
+    data-sal-delay="200"
+    src="../public/images/boda.png"
+    alt=""
+    class="w-[120px] mb-8"
+  />
+  <div
+    data-sal="fade"
+    data-sal-duration="2000"
+    data-sal-delay="200"
+    class="md:w-[70%] w-full text-center flex items-center flex-col"
+  >
     <h4
       class="md:text-5xl text-3xl font-bold border-t-2 border-b-2 md:w-[450px] w-[350px] p-4"
     >
@@ -23,7 +35,12 @@ const photos = [
       nuestro amor ha florecido y cómo nuestro compromiso se ha fortalecido.
     </p>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
+  <div
+    data-sal="fade"
+    data-sal-duration="2000"
+    data-sal-delay="200"
+    class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4"
+  >
     {
       photos.map((photo) => (
         <img
@@ -34,7 +51,12 @@ const photos = [
       ))
     }
   </div>
-  <div class="md:w-[70%] w-full text-center flex items-center flex-col">
+  <div
+    data-sal="fade"
+    data-sal-duration="2000"
+    data-sal-delay="200"
+    class="md:w-[70%] w-full text-center flex items-center flex-col"
+  >
     <p class="md:p-8 p-4 md:text-lg tex-sm mt-3">
       Les damos las gracias por ser parte de nuestra historia y por acompañarnos
       en este día tan significativo. Esperamos con alegría escribir juntos los
